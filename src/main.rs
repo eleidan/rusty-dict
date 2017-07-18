@@ -1,4 +1,13 @@
 use std::env;
+use std::fs::File;
+use std::io::prelude::*;
+
+fn read_the_file() {
+    let mut file = File::open("Dockerfile").unwrap();
+    let mut contents = String::new();
+    file.read_to_string(&mut contents).unwrap();
+    println!("{}", contents);
+}
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -10,6 +19,7 @@ fn main() {
         }
         2 => {
             println!("The word: {}", args[1]);
+            read_the_file();
         }
         _ => {
             println!("{:?}", args);
