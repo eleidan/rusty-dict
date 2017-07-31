@@ -3,7 +3,7 @@ use std::fs::File;
 use std::io::prelude::*;
 
 fn read_the_file() {
-    let mut file = File::open("Dockerfile").unwrap();
+    let mut file = File::open("data/dict.xdxf").unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
     println!("{}", contents);
