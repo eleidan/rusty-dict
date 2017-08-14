@@ -12,3 +12,4 @@ Cargo.lock
 # Docker related stuff
 .docker/
 .cargo/
+/tmp/
