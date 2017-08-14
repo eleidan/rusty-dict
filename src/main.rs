@@ -2,11 +2,15 @@ use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 
-fn read_the_file() {
+fn read_the_file(word: &str) {
     let mut file = File::open("data/dict.xdxf").unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
-    println!("{}", contents);
+    let idx = contents.find(word);
+    match idx {
+        Some(i) => println!("Found the word at position {}", i),
+        None => println!("The word is not found"),
+    }
 }
 
 fn main() {
@@ -19,7 +23,7 @@ fn main() {
         }
         2 => {
             println!("The word: {}", args[1]);
-            read_the_file();
+            read_the_file(&args[1]);
         }
         _ => {
             println!("{:?}", args);
